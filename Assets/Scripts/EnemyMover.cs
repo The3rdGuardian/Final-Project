@@ -15,9 +15,6 @@ public class EnemyMover : MonoBehaviour
 
     private float journeyLength;
 
-    private bool facingRight = true;
-    private bool currentlyfacingRight = false;
-
     Vector3 previousPosition;
 
 
@@ -47,7 +44,6 @@ public class EnemyMover : MonoBehaviour
         if(facingRight == false)
         {
             transform.eulerAngles = new Vector3(0, -180, 0);
-            facingRight = false;
             anim.SetInteger("Condition", 1);
 
         }
@@ -55,7 +51,6 @@ public class EnemyMover : MonoBehaviour
         {
             anim.SetInteger("Condition", 1);
             transform.eulerAngles = new Vector3(0, 0, 0);
-            facingRight = true;
         }
     }
 

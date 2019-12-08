@@ -8,15 +8,15 @@ public class CountdownScript : MonoBehaviour
 
     public float startingTime;
 
-    private readonly Text textTime;
+    public Text textTime;
 
     public Player playerScript;
-
+    float hold;
 
     void Update()
-    {
-        Debug.Log(startingTime -= Time.deltaTime);
+    { 
         startingTime -= Time.deltaTime;
+        hold = startingTime;
 
         if(startingTime < 0)
         {
@@ -30,9 +30,15 @@ public class CountdownScript : MonoBehaviour
 
     void Countdown()
     {
-        if (startingTime == 0)
+        if (startingTime != 0 && playerScript.scoreValue == 11)
+        {
+            startingTime = hold;
+            playerScript.GameWin();
+        }
+        else if (startingTime == 0)
         {
             playerScript.GameOver();
+  
         }
     }
 }

@@ -24,11 +24,12 @@ public class Player : MonoBehaviour
 
     public AudioClip musicClipone;
     public AudioClip musicCliptwo;
+    //public AudioClip musicClipthree;
     
     public AudioSource musicSource;
 
 
-    private int scoreValue;
+    public int scoreValue;
     private int lives;
 
     void Start()
@@ -147,9 +148,7 @@ public class Player : MonoBehaviour
 
         if (lives < 1)
         {
-            loseText.text = "You have lost the game! Better luck next time!";
-            gameObject.GetComponent<Renderer>().enabled = false;
-            rd2d.bodyType = RigidbodyType2D.Static;
+            GameOver();
         }
     }
 
@@ -159,12 +158,7 @@ public class Player : MonoBehaviour
 
         if (lives >= 1 && scoreValue == 11)
         {
-            musicSource.clip = musicCliptwo;
-            musicSource.Play();
-            winText.text = "Congratulations! You Win!";
-            winText2.text = "Game created by Edward Powers";
-            gameObject.GetComponent<Renderer>().enabled = false;
-            rd2d.bodyType = RigidbodyType2D.Static;
+            GameWin();
         }
         else if (lives >= 1 && scoreValue == 6)
         {
@@ -179,6 +173,21 @@ public class Player : MonoBehaviour
     }
     public void GameOver()
     {
+        loseText.text = "You have lost the game! Better luck next time!";
+        gameObject.GetComponent<Renderer>().enabled = false;
+        rd2d.bodyType = RigidbodyType2D.Static; loseText.text = "You have lost the game! Better luck next time!";
+        gameObject.GetComponent<Renderer>().enabled = false;
+        rd2d.bodyType = RigidbodyType2D.Static;
         Debug.Log("Game Over");
+    }
+
+    public void GameWin()
+    {
+        musicSource.clip = musicCliptwo;
+        musicSource.Play();
+        winText.text = "Congratulations! You Win!";
+        winText2.text = "Game created by Edward Powers";
+        gameObject.GetComponent<Renderer>().enabled = false;
+        rd2d.bodyType = RigidbodyType2D.Static;
     }
 }
