@@ -5,18 +5,21 @@ using UnityEngine.UI;
 
 public class CountdownScript : MonoBehaviour
 {
-
+    public bool isover = false;
     public float startingTime;
 
     public Text textTime;
 
     public Player playerScript;
-    float hold;
 
     void Update()
     { 
-        startingTime -= Time.deltaTime;
-        hold = startingTime;
+        if(isover == false)
+        {
+            startingTime -= Time.deltaTime;
+        }
+        
+
 
         if(startingTime < 0)
         {
@@ -30,12 +33,13 @@ public class CountdownScript : MonoBehaviour
 
     void Countdown()
     {
-        if (startingTime != 0 && playerScript.scoreValue == 11)
+
+        if (playerScript.scoreValue == 9)
         {
-            startingTime = hold;
+            isover = true;
             playerScript.GameWin();
         }
-        else if (startingTime == 0)
+        if (startingTime == 0 && playerScript.scoreValue != 9)
         {
             playerScript.GameOver();
   

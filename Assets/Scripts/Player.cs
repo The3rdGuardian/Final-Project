@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     private bool facingRight = true;
     private bool isJumping = false;
+    public bool isPlaying;
 
 
     private Rigidbody2D rd2d;
@@ -22,15 +23,12 @@ public class Player : MonoBehaviour
     public Text winText2;
     public Text loseText;
 
-    public AudioClip musicClipone;
-    public AudioClip musicCliptwo;
-    //public AudioClip musicClipthree;
-    
     public AudioSource musicSource;
-
+    public AudioClip musicCliptwo;
+    public AudioClip jumpClipone;
 
     public int scoreValue;
-    private int lives;
+    public int lives;
 
     void Start()
     {
@@ -44,8 +42,6 @@ public class Player : MonoBehaviour
         rd2d = GetComponent<Rigidbody2D>();
         PrintWinText();
         SetLivesText();
-        musicSource.clip = musicClipone;
-        musicSource.Play();
         anim = GetComponent<Animator>();
         gameObject.GetComponent<Renderer>().enabled = true;
     }
@@ -128,9 +124,11 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
+                musicSource.clip = jumpClipone;
+                musicSource.Play();
                 isJumping = true;
                 anim.SetInteger("State", 2);
-                rd2d.AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+                rd2d.AddForce(new Vector2(0, 4), ForceMode2D.Impulse);
                
             }
             else
@@ -156,15 +154,16 @@ public class Player : MonoBehaviour
     {
         score.text = "Score: " + scoreValue.ToString();
 
-        if (lives >= 1 && scoreValue == 11)
+        if (lives >= 1 && scoreValue == 9)
         {
+            musicSource.Stop();
             GameWin();
         }
-        else if (lives >= 1 && scoreValue == 6)
+        else if (lives >= 1 && scoreValue == 5)
         {
             lives = 3;
             SetLivesText();
-            transform.position = new Vector2(93f, 22f);
+            transform.position = new Vector2(92f, 21f);
         }
         else
         {
@@ -183,8 +182,12 @@ public class Player : MonoBehaviour
 
     public void GameWin()
     {
-        musicSource.clip = musicCliptwo;
-        musicSource.Play();
+        if (!musicSource.isPlaying)
+        {
+            musicSource.clip = musicCliptwo;
+            musicSource.Play();
+        }
+        
         winText.text = "Congratulations! You Win!";
         winText2.text = "Game created by Edward Powers";
         gameObject.GetComponent<Renderer>().enabled = false;

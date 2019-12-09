@@ -5,17 +5,26 @@ using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
-    public AudioSource jumpSource;
-    public AudioClip jumpClipone;
+    public Player playerScript;
+
+    public AudioSource musicSource;
+    public AudioClip musicClipone;
+
+    void Start()
+    {
+        musicSource.clip = musicClipone;
+        musicSource.Play();
+
+    }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if(playerScript.scoreValue == 9)
         {
-            jumpSource.clip = jumpClipone;
-            jumpSource.Play();
+            musicSource.Stop();
+            playerScript.GameWin();
         }
-
     }
+
 }
 

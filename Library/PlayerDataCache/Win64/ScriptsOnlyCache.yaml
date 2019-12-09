@@ -10,10 +10,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -548,7 +546,7 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
-      Hash: db3f8e00198a31b318ac808d74c36af1
+      Hash: 46f583bc4c118a17680f0ccff3799ad0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1124,7 +1122,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 868578609d7269b7424ffd8d8ee0f98d
+      Hash: bcdd7c1c23bcc13310efda73e70b01c8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CountdownScript
@@ -1148,7 +1146,7 @@ ScriptsOnlyBuild:
     className: CameraControl
   - hash:
       serializedVersion: 2
-      Hash: 27fa5bde12bf0c57eb8d67f30c49d988
+      Hash: a228ac612dc76adcc5c7d909b8491088
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameControl
